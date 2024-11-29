@@ -1,87 +1,83 @@
-body {
-    font-family: Arial, sans-serif;
+/* General Reset and Layout */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Main Content Styling */
+main {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    margin-left: 250px; /* Ensure the main content starts next to the sidebar on desktop */
+    transition: margin-left 0.3s ease; /* Smooth transition when sidebar opens/closes */
+}
+
+/* Header Styling */
 header {
     background-color: #333;
     color: white;
     padding: 10px 0;
-}
-
-.logo {
-    font-size: 24px;
     text-align: center;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    text-align: center;
+.logo img {
+    width: 100%;
+    height: auto;
+    max-width: 150px;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
+/* Product List Styling */
 .product-list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-   
 }
 
 .product {
-  
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Align content inside card to the center */
-    width: 200px; /* You can adjust the width */
+    text-align: center;
+    width: 200px;
     padding: 15px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Align all card content centrally */
+    align-items: center;
 }
 
 .product img {
-   
-    max-width: 100%; /* Ensure image fits within the card */
-  height: auto;
-  object-fit: cover; /* Ensures images are cropped correctly */
-  border-radius: 8px;
-  margin-bottom: 15px; /* Adds space between image and text */
-  display: block; /* Ensure image is treated as a block-level element */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
-.product image{
+
+/* Product Image Container Styling */
+.product .image {
     width: 100%;
-    height: 100%; /* Set a fixed height for the image container */
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the image inside the container */
-    overflow: hidden; /* Hide overflowing parts of the image */
+    justify-content: center;
+    overflow: hidden;
     margin-bottom: 15px;
     border-radius: 8px;
 }
+
+/* Button Styling */
 button {
     background-color: #28a745;
     color: white;
@@ -97,12 +93,141 @@ button:hover {
     background-color: #218838;
 }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
+/* Sidebar and Footer Styling */
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
     background-color: #333;
     color: white;
-    position: relative;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-wrapper ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-wrapper ul li {
+    margin: 20px 0;
+}
+
+.sidebar-wrapper ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+.sidebar-wrapper ul li a:hover {
+    background-color: #444;
+    padding: 10px;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
+
+/* Burger Button (Hamburger Menu) */
+.burger-btn {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.burger-icon {
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin: 6px auto;
+    background-color: #fff;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-250px); /* Sidebar hidden by default */
+    }
+
+    .sidebar.open {
+        transform: translateX(0); /* Sidebar slides in */
+    }
+
+    .burger-btn {
+        display: block; /* Show burger button on mobile */
+    }
+
+    main {
+        margin-left: 0; /* No left margin on mobile */
+        padding: 10px;
+    }
+
+    footer {
+        margin-top: 20px;
+    }
+
+    .wrapper {
+        flex-direction: column;
+    }
+}
+/* Burger Button (Hamburger Menu) */
+.burger-btn {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.burger-icon {
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin: 6px auto;
+    background-color: #fff;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    .burger-btn {
+        display: block; /* Show burger button on mobile */
+    }
+
+    .sidebar {
+        transform: translateX(-250px); /* Sidebar hidden by default on mobile */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.open {
+        transform: translateX(0); /* Sidebar slides in */
+    }
+
+    /* Main content adjusts when sidebar opens */
+    main {
+        margin-left: 0; /* Remove left margin on mobile */
+    }
+}
+
