@@ -1,3 +1,9 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(https://imgs.search.brave.com/EPWFYqQtFrTC9-svnFtcNl6bJGYFTqP4OyqCKszrToY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9mbGF0LWxheS13/aXRoLWVjby13aGl0/ZS1jcmFmdC1wYXBl/ci1iYWdzLW5ldC1i/YWdzLWdyYXktYmFj/a2dyb3VuZC13aXRo/LWNvcHktc3BhY2Vf/MzcxNDI4LTE5NjUu/anBnP3NlbXQ9YWlz/X2h5YnJpZA);
+}
 /* General Reset and Layout */
 * {
     margin: 0;
@@ -227,7 +233,7 @@ footer {
 
     /* Main content adjusts when sidebar opens */
     main {
-        margin-left: 0; /* Remove left margin on mobile */
+        margin-left:0; /* Remove left margin on mobile */
     }
 }
 
